@@ -63,7 +63,7 @@
     if (!reduceMotion) {
       var startLoop = function () {
         var bg = document.createElement('iframe');
-        bg.src = ytBase + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&start=' + ytStart;
+        bg.src = ytBase + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&start=' + ytStart;
         bg.title = 'Background preview of the video';
         bg.allow = 'autoplay; encrypted-media; picture-in-picture';
         bg.tabIndex = -1;
