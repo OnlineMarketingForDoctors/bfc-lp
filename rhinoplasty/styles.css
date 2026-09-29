@@ -352,7 +352,9 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .reviews { background: linear-gradient(180deg, var(--ink-950) 0%, var(--ink) 100%); color: #fff; overflow: hidden; }
 .reviews::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 90% 0%, rgba(29, 55, 201, .55), transparent 70%); pointer-events: none; }
 .reviews-top { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 48px; position: relative; }
-.reviews-top .badge-doctify img { height: 96px; }
+.reviews-rating .r-logo img { height: 30px; }
+.reviews-rating .r-score { font-size: 2.8rem; }
+.reviews-rating .r-stars svg { width: 20px; height: 20px; }
 .carousel { position: relative; }
 .carousel-viewport { overflow: hidden; margin: 0 calc(-1 * var(--gutter)); padding: 20px 0 30px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .carousel-track { display: flex; gap: 22px; width: max-content; will-change: transform; touch-action: pan-y; }
@@ -391,7 +393,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .round-btn { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid currentColor; background: transparent; display: grid; place-items: center; transition: background-color .25s ease, color .25s ease; }
 .round-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-950); }
 .round-btn svg { width: 20px; height: 20px; }
-@media (max-width: 640px) { .review-card { flex-basis: 80vw; } .reviews-top .badge-doctify { display: none; } }
+@media (max-width: 640px) { .review-card { flex-basis: 80vw; } .reviews-rating { display: none; } }
 
 /* ------------------------------------------------ Intro (struggling) */
 .intro-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
