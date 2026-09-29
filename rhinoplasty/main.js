@@ -94,6 +94,18 @@
     lightbox.addEventListener('close', function () { lbFrame.innerHTML = ''; });
   }
 
+  /* ---------- Hero results card: cross-fade through a few before and afters */
+  var mini = $('.ba-mini');
+  if (mini && !reduceMotion) {
+    var miniImgs = $$('.ba-mini-track img', mini), miniDots = $$('.ba-mini-dots i', mini), mi = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      miniImgs[mi].classList.remove('is-on'); miniDots[mi].classList.remove('is-on');
+      mi = (mi + 1) % miniImgs.length;
+      miniImgs[mi].classList.add('is-on'); miniDots[mi].classList.add('is-on');
+    }, 3200);
+  }
+
   /* ---------- Silent background loops: play only when visible, never with reduced motion */
   $$('video[data-bg-loop]').forEach(function (v) {
     if (reduceMotion || !('IntersectionObserver' in window)) return;
