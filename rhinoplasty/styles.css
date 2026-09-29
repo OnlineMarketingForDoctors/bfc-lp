@@ -294,8 +294,8 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   .sat-1 { width: 28%; }
   .sat-2 { width: 28%; }
   .sat-3 { display: none; }
-  .video-frame { border-width: 4px; margin-left: 14%; }
-  .hero-badges { left: 0; right: auto; bottom: 30px; }
+  .video-frame { border-width: 4px; width: 86%; margin: 0 auto; }
+  .hero-badges { left: 0; right: 0; bottom: 30px; justify-content: center; }
   .badge-doctify img { height: 70px; }
   .sound-btn { right: 10px; bottom: 10px; padding: 8px 12px 8px 10px; font-size: .72rem; }
 }
