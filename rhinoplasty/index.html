@@ -27,6 +27,7 @@
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z" fill="currentColor"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4.5 4.5 0 010 6M18 6.5a8 8 0 010 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
 </svg>
 
@@ -34,8 +35,7 @@
 <header class="site-header" id="top">
   <div class="wrap header-inner">
     <a class="brand" href="#top" aria-label="British Face Clinic, back to top">
-      <img src="img/logo.webp" width="64" height="64" alt="British Face Clinic logo">
-      <span class="brand-name">British Face Clinic<small>Mr Mrinal Supriya FRCS</small></span>
+      <img src="img/logo.webp" width="84" height="84" alt="British Face Clinic logo">
     </a>
     <a class="btn btn-primary mobile-book" href="#book">Book a consultation</a>
 
@@ -100,7 +100,7 @@
         <li><svg><use href="#i-check"/></svg>Consultations on Harley Street, London</li>
       </ul>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#book">Book a consultation</a>
+        <a class="btn btn-gold" href="#book">Book a consultation</a>
         <a class="tel-link" href="tel:+447590817036">Or call 07590 817036</a>
       </div>
     </div>
@@ -108,12 +108,11 @@
     <div class="hero-media">
       <figure class="sat sat-1" data-parallax="-0.06"><img src="img/profile-gold-800.webp" width="800" height="993" alt="Woman in side profile with a softly refined nose, lit in gold against deep blue"></figure>
       <figure class="sat sat-2" data-parallax="0.05"><img src="img/dr-real-portrait-800.webp" width="800" height="533" alt="Mr Mrinal Supriya smiling in a navy suit" style="object-position:55% 30%"></figure>
-      <div class="video-frame" id="hero-video">
-        <button class="yt-facade" type="button" data-yt="3rhztbRLffE" data-start="225" aria-label="Play video: Mr Supriya explains rhinoplasty">
-          <img src="https://i.ytimg.com/vi/3rhztbRLffE/hqdefault.jpg" alt="" width="480" height="360" loading="eager">
-          <span class="play"><svg><use href="#i-play"/></svg></span>
-          <span class="vlabel">Watch Mr Supriya explain rhinoplasty</span>
-        </button>
+      <div class="video-frame" id="hero-video" data-yt="3rhztbRLffE" data-start="225">
+        <img class="video-poster" src="https://i.ytimg.com/vi/3rhztbRLffE/hqdefault.jpg" alt="" width="480" height="360">
+        <div class="video-bg" aria-hidden="true"></div>
+        <button class="video-open" type="button" data-video-lightbox aria-label="Watch the video with sound" tabindex="-1"></button>
+        <button class="sound-btn" type="button" data-video-lightbox><svg><use href="#i-sound"/></svg>Play with sound</button>
       </div>
       <figure class="sat sat-3" data-parallax="0.08"><img src="img/dr-examining-800.webp" width="800" height="993" alt="Mr Supriya examining a patient's nasal profile" style="object-position:50% 35%"></figure>
       <div class="hero-badges">
@@ -125,7 +124,7 @@
           </div>
           <span class="sr-only">Rated 5.0 out of 5 on Google</span>
         </div>
-        <div class="badge-doctify"><img src="img/doctify-badge.webp" width="200" height="127" alt="Recommended by patients on Doctify"></div>
+        <a class="badge-doctify" href="https://www.doctify.com/uk/specialist/mr-mrinal-supriya-1#reviews" target="_blank" rel="noopener"><img src="img/doctify-badge.webp" width="200" height="127" alt="Recommended by patients on Doctify. Read Mr Supriya's reviews on Doctify (opens in a new tab)"></a>
       </div>
     </div>
   </div>
@@ -139,7 +138,7 @@
         <span class="kicker">Verified patients on Doctify</span>
         <h2 class="h2" id="reviews-title">Told in their own words</h2>
       </div>
-      <div class="badge-doctify"><img src="img/doctify-badge.webp" width="200" height="127" alt="Recommended by patients on Doctify"></div>
+      <a class="badge-doctify" href="https://www.doctify.com/uk/specialist/mr-mrinal-supriya-1#reviews" target="_blank" rel="noopener"><img src="img/doctify-badge.webp" width="200" height="127" alt="Recommended by patients on Doctify. Read Mr Supriya's reviews on Doctify (opens in a new tab)"></a>
     </div>
 
     <div class="carousel" data-carousel>
@@ -149,61 +148,61 @@
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">The service and care I received throughout the entire rhinoplasty process, from initial consultation through to post-op aftercare, has been of the absolute highest standard. The results of my surgery with Mr Supriya have already exceeded what I could've thought possible, and I feel incredibly fortunate and happy that I chose to have my procedure undertaken with the British Face Clinic. Holly has been wonderful throughout, providing constant support and making the process comfortable and easy. At every stage, I feel that all elements of the procedure and recovery were fully explained. The day of the surgery was as smooth and comfortable as possible, and both Mr Supriya and the nurses at Athena Medical Centre provided excellent care. I am so grateful for the British Face Clinic and Mr Supriya's impeccable work, and cannot recommend this clinic enough.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2024-03-13">13 Mar 2024</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">It's been just over a year since I had my rhinoplasty operation by Mr Supriya and I'm still over the moon with my new nose. My experience from start to finish was great! It was clear upon first meeting Mr Supriya that he was very knowledgeable. He not only understood what I was looking to change but also gave advice on what was achievable and what would look best for me. He was always kind and caring and I never felt rushed or pressured. I was always informed of what was going to happen and assured to ask any questions that I may have. I really cannot thank Mr Supriya enough for his amazing work.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2023-03-31">31 Mar 2023</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">Mr Supriya listened to what I wanted but also made it clear what was possible. I really understood the process and what the end result would be.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient, Rhinoplasty</span><time datetime="2021-12-10">10 Dec 2021</time></footer>
+            <footer><span>Verified patient, Rhinoplasty</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">I am very pleased with the result of my surgery. It's been 4 months now from my rhinoplasty. I will say I have done my research and I have decided to go with Dr. Mrinal Supriya. I have found the doctor very easy going, confident and acquainted. Assured me if anything or any questions I should contact him. I can say the next day after the surgery I had a bit of black eye but that is normal after having this kind of surgery, but like me knowing that I have some allergies I contacted Dr. Supriya and he saw me straight away, one of the qualities of a good and caring doctor. Had been told to take arnica tablets and in the next 7 to 14 days the black eye and the swelling were gone. My breathing improved so much and the shape of the nose is just right for my face. Thank you! You have changed this part of me that I felt ashamed of.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2021-12-08">08 Dec 2021</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">A fantastic experience from start to finish. From helping me understand the medical issues around my breathing to the cosmetic adjustments I opted in to, Mr Supriya was great.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2024-04-19">19 Apr 2024</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">I found Mr Supriya and his manager Holly incredibly accommodating. I have been back several times with questions and tweaks. Never once by either Mr Supriya or Holly did I feel I was being an inconvenience. Both very professional and very quick to respond. Along with the above the results were superb. I'm really happy with the outcome. Everything turned out how Mr Supriya explained it would pre op.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2023-05-18">18 May 2023</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">Mr Supriya was clear and concise when explaining what he planned to do to make my nose more symmetrical. He was extremely professional with his approach both pre and post my surgery and, before going through with it, wanted to be absolutely sure I felt I was making the right decision.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2021-12-09">09 Dec 2021</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">Dr Supriya is a fantastic doctor! He is kind and super easy to talk to. He listened well to all my concerns and problems. He explained my condition and the procedure I needed very clearly to me. He put me at ease during my septoplasty surgery and I recovered from my surgery very quickly with no complications or infections. Would recommend him to everyone I know. It was a pleasure!</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2023-03-21">21 Mar 2023</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">Mr Supriya is very professional, always happy to answer any questions I had. His team are excellent with communication. I would highly recommend. I am so happy with the outcome from my procedure.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2023-10-12">12 Oct 2023</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
           <li class="review-card">
             <div class="rc-top"><span class="rc-stars" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><img class="rc-logo" src="img/doctify-logo.webp" width="240" height="60" alt="Doctify"></div>
             <blockquote class="rc-text">Wonderful surgeon, listened to what I wanted to achieve and the results were fantastic. Kind, caring team that guided me through the whole process. Highly recommend.</blockquote>
             <button class="rc-more" type="button" hidden>Read more</button>
-            <footer><span>Verified patient</span><time datetime="2022-03-30">30 Mar 2022</time></footer>
+            <footer><span>Verified patient</span></footer>
           </li>
         </ul>
       </div>
@@ -713,6 +712,11 @@
     <p class="disclaimer">Individual results vary. All surgery carries risks, which Mr Supriya will discuss with you in detail at your consultation. Before and after photographs are of real patients and are shown with their consent.</p>
   </div>
 </footer>
+
+<dialog class="video-lightbox" id="video-lightbox" aria-label="Video">
+  <button class="icon-btn lb-close" type="button" aria-label="Close video" data-lightbox-close><svg><use href="#i-close"/></svg></button>
+  <div class="lb-frame"></div>
+</dialog>
 
 <div class="call-bar" data-call-bar>
   <a class="btn btn-ghost" href="tel:+447590817036"><svg><use href="#i-phone"/></svg>Call now</a>

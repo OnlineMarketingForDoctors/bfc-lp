@@ -53,17 +53,39 @@
     }, { passive: true });
   }
 
-  /* ---------- Hero YouTube facade */
-  $$('.yt-facade').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0&modestbranding=1&start=' + (btn.dataset.start || 0);
-      f.title = 'Mr Supriya explains rhinoplasty';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      f.allowFullscreen = true;
-      btn.replaceWith(f);
+  /* ---------- Hero video: muted loop in the frame, full video with sound in a lightbox */
+  var heroVideo = $('#hero-video');
+  var lightbox = $('#video-lightbox');
+  if (heroVideo) {
+    var ytId = heroVideo.dataset.yt, ytStart = heroVideo.dataset.start || 0;
+    var ytBase = 'https://www.youtube-nocookie.com/embed/' + ytId;
+
+    if (!reduceMotion) {
+      var startLoop = function () {
+        var bg = document.createElement('iframe');
+        bg.src = ytBase + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&start=' + ytStart;
+        bg.title = 'Background preview of the video';
+        bg.allow = 'autoplay; encrypted-media; picture-in-picture';
+        bg.tabIndex = -1;
+        bg.addEventListener('load', function () { setTimeout(function () { bg.classList.add('is-live'); }, 900); });
+        $('.video-bg', heroVideo).appendChild(bg);
+      };
+      if (document.readyState === 'complete') startLoop(); else window.addEventListener('load', startLoop);
+    }
+
+    var lbFrame = $('.lb-frame', lightbox);
+    var closeLightbox = function () { if (lightbox.open) lightbox.close(); };
+    $$('[data-video-lightbox]', heroVideo).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lbFrame.innerHTML = '<iframe src="' + ytBase + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=' + ytStart + '" title="Rhinoplasty at British Face Clinic" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        if (typeof lightbox.showModal === 'function') lightbox.showModal(); else lightbox.setAttribute('open', '');
+      });
     });
-  });
+    $('[data-lightbox-close]', lightbox).addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    // Removing the iframe stops the audio when the lightbox closes (button, Esc or backdrop)
+    lightbox.addEventListener('close', function () { lbFrame.innerHTML = ''; });
+  }
 
   /* ---------- Patient video reviews */
   $$('.poster-btn[data-video]').forEach(function (btn) {
@@ -110,7 +132,19 @@
       var offset = cards[index].offsetLeft - cards[0].offsetLeft;
       track.style.transform = 'translateX(' + (-offset) + 'px)';
       cards.forEach(function (c, n) { c.setAttribute('aria-hidden', String(n < index || n >= index + perView())); });
+      animateVisible();
       restartBar();
+    }
+    function animateVisible() {
+      if (reduceMotion) return;
+      var pv = perView();
+      cards.forEach(function (c, n) {
+        if (n < index || n >= index + pv) return;
+        c.classList.remove('is-in');
+        c.style.setProperty('--d', ((n - index) * 110) + 'ms');
+        void c.offsetWidth;
+        c.classList.add('is-in');
+      });
     }
     function restartBar() {
       if (reduceMotion || !bar) return;
@@ -140,7 +174,10 @@
     window.addEventListener('resize', function () { go(Math.min(index, maxIndex())); });
 
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }, { threshold: 0.3 }).observe(carousel);
+      var seen = false;
+      new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { if (!seen) { seen = true; animateVisible(); } start(); } else stop();
+      }, { threshold: 0.3 }).observe(carousel);
     }
     go(0);
   }
