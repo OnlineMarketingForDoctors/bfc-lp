@@ -190,7 +190,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero-grid { position: relative; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 3.5vw, 48px); align-items: center; }
 .hero-copy .display { color: #fff; max-width: 11ch; }
 .hero-sub { margin: 22px 0 26px; font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--on-dark-muted); max-width: 44ch; }
-.hero-points { display: grid; gap: 12px; margin-bottom: 34px; }
+.hero-points { display: grid; gap: 12px; margin: 30px 0 34px; }
 .hero-points li { display: flex; gap: 14px; align-items: flex-start; font-weight: 600; }
 .hero-points li svg { flex: none; width: 24px; height: 24px; margin-top: 1px; color: var(--gold); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
@@ -266,7 +266,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Small rotating before and after card on the video's bottom-right corner */
 .ba-mini {
   position: absolute; z-index: 3; right: 24px; bottom: 50px; width: 30%;
-  display: block; border-radius: var(--r-md); overflow: hidden; background: #fff;
+  display: block; padding: 0; cursor: zoom-in; text-align: left; border-radius: var(--r-md); overflow: hidden; background: #fff;
   border: 5px solid #fff; box-shadow: var(--shadow-lg); text-decoration: none; transition: transform .3s ease;
 }
 .ba-mini:hover { transform: translateY(-4px); }

@@ -105,6 +105,11 @@
       miniImgs[mi].classList.add('is-on'); miniDots[mi].classList.add('is-on');
     }, 3200);
   }
+  if (mini) mini.addEventListener('click', function () {
+    var imgs = $$('.ba-mini-track img', mini), start = 0;
+    imgs.forEach(function (im, k) { if (im.classList.contains('is-on')) start = k; });
+    openBA(imgs.map(function (im) { return { src: im.src, alt: im.alt }; }), start, 'Rhinoplasty, before and after');
+  });
 
   /* ---------- Silent background loops: play only when visible, never with reduced motion */
   $$('video[data-bg-loop]').forEach(function (v) {
