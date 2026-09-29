@@ -1,0 +1,9 @@
+# Raw source assets stay in the repo but are not deployed
+Reviews/
+doctor photos/
+team photos/
+video reviews/
+*.zip
+*.docx
+.claude/
+CLAUDE.md
