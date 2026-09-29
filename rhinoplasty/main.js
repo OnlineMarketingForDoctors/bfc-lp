@@ -60,17 +60,32 @@
     var ytId = heroVideo.dataset.yt, ytStart = heroVideo.dataset.start || 0;
     var ytBase = 'https://www.youtube-nocookie.com/embed/' + ytId;
 
+    var poster = $('.video-poster', heroVideo);
+    if (reduceMotion) poster.classList.add('is-shown');
     if (!reduceMotion) {
-      var startLoop = function () {
-        var bg = document.createElement('iframe');
-        bg.src = ytBase + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&start=' + ytStart;
-        bg.title = 'Background preview of the video';
-        bg.allow = 'autoplay; encrypted-media; picture-in-picture';
-        bg.tabIndex = -1;
-        bg.addEventListener('load', function () { setTimeout(function () { bg.classList.add('is-live'); }, 900); });
-        $('.video-bg', heroVideo).appendChild(bg);
-      };
-      if (document.readyState === 'complete') startLoop(); else window.addEventListener('load', startLoop);
+      // Start straight away (no waiting for the rest of the page) and keep the
+      // frame dark until YouTube reports the video is actually playing, so its
+      // thumbnail never flashes up
+      var bg = document.createElement('iframe');
+      bg.src = ytBase + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '&controls=0&cc_load_policy=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + ytStart;
+      bg.title = 'Background preview of the video';
+      bg.allow = 'autoplay; encrypted-media; picture-in-picture';
+      bg.tabIndex = -1;
+      var live = false;
+      function goLive() { if (live) return; live = true; bg.classList.add('is-live'); }
+      window.addEventListener('message', function (ev) {
+        if (ev.source !== bg.contentWindow) return;
+        var d; try { d = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data; } catch (err) { return; }
+        if (!d) return;
+        if (d.event === 'onStateChange' && d.info === 1) goLive();
+        if (d.event === 'infoDelivery' && d.info && d.info.playerState === 1) goLive();
+      });
+      bg.addEventListener('load', function () {
+        bg.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'hero-loop' }), '*');
+      });
+      // Autoplay blocked (e.g. low power mode): bring the thumbnail back
+      setTimeout(function () { if (!live) poster.classList.add('is-shown'); }, 6000);
+      $('.video-bg', heroVideo).appendChild(bg);
     }
 
     var lbFrame = $('.lb-frame', lightbox);
