@@ -303,10 +303,10 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .reviews-top { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 48px; position: relative; }
 .reviews-top .badge-doctify img { height: 96px; }
 .carousel { position: relative; }
-.carousel-viewport { overflow: hidden; margin: 0 calc(-1 * var(--gutter)); padding: 10px var(--gutter) 30px; }
-.carousel-track { display: flex; gap: 22px; transition: transform .8s cubic-bezier(.65,0,.25,1); will-change: transform; }
+.carousel-viewport { overflow: hidden; margin: 0 calc(-1 * var(--gutter)); padding: 20px 0 30px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.carousel-track { display: flex; gap: 22px; width: max-content; will-change: transform; touch-action: pan-y; }
 .review-card {
-  flex: 0 0 calc((100% - 44px) / 3);
+  flex: 0 0 clamp(290px, 28vw, 400px);
   background: linear-gradient(160deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
   border: 1px solid rgba(255,255,255,.14);
   border-radius: var(--r-md);
@@ -326,16 +326,6 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .review-card:hover::before { transform: translateX(420%) rotate(12deg); }
 .review-card:hover .rc-logo { transform: scale(1.06); }
 .review-card .rc-logo { transition: transform .4s ease; }
-/* Cascade in whenever the carousel moves */
-.review-card.is-in { animation: card-in .85s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: var(--d, 0ms); }
-@keyframes card-in { from { opacity: 0; transform: translateY(34px) scale(.96); } to { opacity: 1; transform: none; } }
-.review-card.is-in .rc-stars svg { animation: star-pop .5s cubic-bezier(.3,1.6,.5,1) both; }
-.review-card.is-in .rc-stars svg:nth-child(1) { animation-delay: calc(var(--d, 0ms) + 350ms); }
-.review-card.is-in .rc-stars svg:nth-child(2) { animation-delay: calc(var(--d, 0ms) + 420ms); }
-.review-card.is-in .rc-stars svg:nth-child(3) { animation-delay: calc(var(--d, 0ms) + 490ms); }
-.review-card.is-in .rc-stars svg:nth-child(4) { animation-delay: calc(var(--d, 0ms) + 560ms); }
-.review-card.is-in .rc-stars svg:nth-child(5) { animation-delay: calc(var(--d, 0ms) + 630ms); }
-@keyframes star-pop { from { opacity: 0; transform: scale(.2) rotate(-40deg); } to { opacity: 1; transform: none; } }
 .review-card .rc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
 .review-card .rc-stars { display: flex; gap: 3px; color: #5de0c6; }
 .review-card .rc-stars svg { width: 18px; height: 18px; }
@@ -347,13 +337,10 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .review-card .rc-more[hidden] { display: none; }
 .review-card footer { margin-top: auto; padding-top: 18px; font-size: .85rem; color: var(--on-dark-muted); display: flex; justify-content: flex-end; }
 .carousel-controls { display: flex; align-items: center; gap: 16px; position: relative; }
-.carousel-controls .progress { flex: 1; height: 2px; background: rgba(255,255,255,.18); border-radius: 2px; overflow: hidden; }
-.carousel-controls .progress span { display: block; height: 100%; width: 0; background: var(--gold); }
 .round-btn { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid currentColor; background: transparent; display: grid; place-items: center; transition: background-color .25s ease, color .25s ease; }
 .round-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-950); }
 .round-btn svg { width: 20px; height: 20px; }
-@media (max-width: 1020px) { .review-card { flex-basis: calc((100% - 22px) / 2); } }
-@media (max-width: 640px) { .review-card { flex-basis: 88%; } }
+@media (max-width: 640px) { .review-card { flex-basis: 80vw; } }
 
 /* ------------------------------------------------ Intro (struggling) */
 .intro-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
