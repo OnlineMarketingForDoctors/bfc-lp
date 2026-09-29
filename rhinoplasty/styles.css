@@ -358,7 +358,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .round-btn { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid currentColor; background: transparent; display: grid; place-items: center; transition: background-color .25s ease, color .25s ease; }
 .round-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-950); }
 .round-btn svg { width: 20px; height: 20px; }
-@media (max-width: 640px) { .review-card { flex-basis: 80vw; } }
+@media (max-width: 640px) { .review-card { flex-basis: 80vw; } .reviews-top .badge-doctify { display: none; } }
 
 /* ------------------------------------------------ Intro (struggling) */
 .intro-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
@@ -723,24 +723,11 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 @media (max-width: 1020px) { .book-grid { grid-template-columns: 1fr; } .book-media { display: none; } }
 
 /* ------------------------------------------------ Footer */
-.site-footer { background: var(--ink-950); color: var(--on-dark-muted); padding: 50px 0 110px; font-size: .9rem; }
+.site-footer { background: var(--ink-950); color: var(--on-dark-muted); padding: 50px 0; font-size: .9rem; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
 .site-footer img { width: auto; height: 76px; background: #fff; padding: 10px 14px; border-radius: 18px; box-sizing: content-box; }
 .site-footer a { color: #fff; }
 .site-footer .disclaimer { margin-top: 24px; font-size: .8rem; max-width: 90ch; }
-
-/* Mobile sticky call bar */
-.call-bar { display: none; }
-@media (max-width: 1020px) {
-  .call-bar {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 90;
-    transform: translateY(140%); transition: transform .4s ease;
-  }
-  .call-bar.is-visible { transform: none; }
-  .call-bar .btn { min-height: 52px; font-size: .78rem; padding: 0 12px; white-space: nowrap; }
-  .call-bar .btn-ghost { background: #fff; color: var(--ink); box-shadow: var(--shadow-md), inset 0 0 0 1.5px var(--ink); }
-}
 
 /* Parallax helpers */
 [data-parallax] { will-change: transform; }

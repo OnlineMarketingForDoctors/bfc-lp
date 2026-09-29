@@ -8,17 +8,10 @@
   /* ---------- Page-load moment */
   requestAnimationFrame(function () { document.body.classList.add('is-ready'); });
 
-  /* ---------- Header state + mobile call bar */
+  /* ---------- Header state */
   var header = $('.site-header');
-  var callBar = $('[data-call-bar]');
-  var bookSection = $('#book');
   function onScroll() {
-    var y = window.scrollY;
-    header.classList.toggle('is-scrolled', y > 40);
-    if (callBar) {
-      var bookTop = bookSection.getBoundingClientRect().top;
-      callBar.classList.toggle('is-visible', y > 600 && bookTop > window.innerHeight * 0.6);
-    }
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
