@@ -234,27 +234,36 @@
     }
     var nav = c.n > 1;
     return '<article class="ba-case">' +
-      '<div class="ba-slider" data-slider>' +
+      '<div class="ba-slider" data-slider data-caption="' + c.title + ', ' + c.meta.toLowerCase() + '">' +
+        '<button class="ba-zoom" type="button" aria-label="View full size"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></button>' +
         '<div class="ba-slides">' + slides + '</div>' +
-        (nav ? '<button class="ba-nav prev" type="button" aria-label="Previous view" hidden><svg><use href="#i-left"/></svg></button>' +
-               '<button class="ba-nav next" type="button" aria-label="Next view"><svg><use href="#i-right"/></svg></button>' +
-               '<div class="ba-dots">' + dots + '</div>' : '') +
       '</div>' +
+      // Controls sit below the photo so they never cover a face
+      (nav ? '<div class="ba-controls">' +
+               '<button class="ba-nav prev" type="button" aria-label="Previous view" disabled><svg><use href="#i-left"/></svg></button>' +
+               '<div class="ba-dots">' + dots + '</div>' +
+               '<button class="ba-nav next" type="button" aria-label="Next view"><svg><use href="#i-right"/></svg></button>' +
+             '</div>' : '') +
       '<div class="ba-caption"><h3>' + c.title + '</h3><div class="meta">' + c.meta + '</div><p>' + c.text + '</p></div>' +
     '</article>';
   }
 
   function initSlider(el) {
-    var slides = $('.ba-slides', el), imgs = $$('img', slides), dots = $$('.ba-dots button', el);
-    var prev = $('.ba-nav.prev', el), next = $('.ba-nav.next', el);
-    var i = 0, n = imgs.length;
+    var box = el.closest('.ba-case');
+    var slides = $('.ba-slides', el), imgs = $$('img', slides), dots = $$('.ba-dots button', box);
+    var prev = $('.ba-nav.prev', box), next = $('.ba-nav.next', box);
+    var i = 0, n = imgs.length, swiped = false;
+    // Tap or click a photo (or the expand button) to see every view full size
+    function zoom() { openBA(imgs.map(function (im) { return { src: im.src, alt: im.alt }; }), i, el.dataset.caption); }
+    slides.addEventListener('click', function () { if (swiped) { swiped = false; return; } zoom(); });
+    $('.ba-zoom', el).addEventListener('click', zoom);
     if (n < 2) return;
     function show(k) {
       i = Math.max(0, Math.min(n - 1, k));
       slides.style.transform = 'translateX(' + (-100 * i) + '%)';
       dots.forEach(function (d, j) { d.setAttribute('aria-current', String(j === i)); });
-      prev.hidden = i === 0;
-      next.hidden = i === n - 1;
+      prev.disabled = i === 0;
+      next.disabled = i === n - 1;
     }
     prev.addEventListener('click', function () { show(i - 1); });
     next.addEventListener('click', function () { show(i + 1); });
@@ -265,10 +274,41 @@
       if (sx === null) return;
       var dx = e.clientX - sx;
       if (Math.abs(dx) > 35) show(i + (dx < 0 ? 1 : -1));
+      swiped = Math.abs(dx) > 10;
       sx = null;
     });
     el.addEventListener('pointercancel', function () { sx = null; });
   }
+
+  /* Before and after lightbox */
+  var baBox = $('#ba-lightbox'), baImg = $('.bal-img', baBox), baCount = $('.bal-count', baBox), baCap = $('.bal-caption', baBox);
+  var baSet = [], baI = 0;
+  function baShow(k) {
+    baI = (k + baSet.length) % baSet.length;
+    baImg.src = baSet[baI].src; baImg.alt = baSet[baI].alt;
+    baCount.textContent = (baI + 1) + ' / ' + baSet.length;
+    var multi = baSet.length > 1;
+    $('.bal-prev', baBox).hidden = !multi; $('.bal-next', baBox).hidden = !multi; baCount.hidden = !multi;
+  }
+  function openBA(set, k, caption) {
+    baSet = set; baCap.textContent = caption || ''; baShow(k);
+    if (typeof baBox.showModal === 'function') baBox.showModal(); else baBox.setAttribute('open', '');
+  }
+  $('.bal-prev', baBox).addEventListener('click', function () { baShow(baI - 1); });
+  $('.bal-next', baBox).addEventListener('click', function () { baShow(baI + 1); });
+  $('.bal-close', baBox).addEventListener('click', function () { baBox.close(); });
+  baBox.addEventListener('click', function (e) { if (e.target === baBox) baBox.close(); });
+  baBox.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') baShow(baI + 1);
+    if (e.key === 'ArrowLeft') baShow(baI - 1);
+  });
+  var bx = null;
+  baBox.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') bx = e.clientX; });
+  baBox.addEventListener('pointerup', function (e) {
+    if (bx === null) return;
+    var dx = e.clientX - bx; bx = null;
+    if (Math.abs(dx) > 40 && baSet.length > 1) baShow(baI + (dx < 0 ? 1 : -1));
+  });
 
   function renderBA(p, animate) {
     function draw() {
