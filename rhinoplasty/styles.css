@@ -178,7 +178,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ------------------------------------------------ Hero */
 .hero {
-  position: relative; padding: clamp(28px, 5vw, 64px) 0 clamp(70px, 8vw, 120px); overflow: hidden; color: #fff;
+  position: relative; padding: clamp(48px, 6vw, 90px) 0; overflow: hidden; color: #fff;
   background: linear-gradient(115deg, var(--ink-950) 0%, var(--ink) 38%, var(--royal) 100%);
 }
 .hero::before {
@@ -257,6 +257,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .r-doctify .r-stars svg { fill: #5de0c6; }
 .r-count { grid-area: count; font-size: .85rem; color: var(--on-dark-muted); }
 .rating:hover .r-count { color: #fff; text-decoration: underline; }
+/* Desktop: ratings sit in the hero's top-right corner */
+@media (min-width: 1021px) {
+  .hero-ratings { position: absolute; top: 0; right: 0; z-index: 4; margin: 0; padding: 0; border: 0; gap: 36px; }
+}
 /* Hero sound button sits bottom left, clear of the results card */
 #hero-video .sound-btn { right: auto; left: 16px; }
 /* Small rotating before and after card on the video's bottom-right corner */
