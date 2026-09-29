@@ -284,12 +284,6 @@ a.badge-doctify { transition: transform .25s ease, box-shadow .25s ease; }
 a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .badge-doctify img { height: 86px; width: auto; }
 
-.profile-line { position: absolute; z-index: 0; right: 4%; top: 40px; width: 42%; height: auto; color: var(--gold); opacity: .6; pointer-events: none; }
-.profile-line path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.profile-line-left { right: auto; left: 3%; top: 50px; width: 34%; height: calc(100% - 70px); opacity: .45; }
-.profile-line-left path { animation-delay: .6s !important; }
-.is-ready .profile-line path { animation: draw 2.6s cubic-bezier(.6,.1,.2,1) .3s forwards; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
 
 .hero-copy > * { opacity: 0; transform: translateY(18px); }
 .is-ready .hero-copy > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -322,7 +316,6 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   .r-logo-google img { height: 17px; }
   .hero { padding-bottom: 50px; }
   .hero-media { padding: 70px 10px 140px 40px; margin-right: 0; }
-  .profile-line { display: none; }
   .sat-1 { left: 0; top: 0; }
 }
 @media (max-width: 640px) {
@@ -823,7 +816,6 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; transition-duration: .001ms !important; }
   .hero-copy > * { opacity: 1; transform: none; }
-  .profile-line path { stroke-dashoffset: 0; }
   .js .reveal { clip-path: inset(0 0 0 0 round var(--r-lg)); }
   [data-parallax] { transform: none !important; }
 }
