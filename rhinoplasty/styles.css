@@ -348,7 +348,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .intro-media .main { aspect-ratio: 4 / 5; width: 78%; }
 .intro-media .satellite { position: absolute; right: 0; bottom: 0; width: 50%; aspect-ratio: 4/5; border: 6px solid var(--porcelain); border-radius: var(--r-md); }
 .intro-quote {
-  position: absolute; left: 50%; top: 12%; width: 46%;
+  position: absolute; left: -28px; bottom: 30px; width: 44%; z-index: 2;
   background: var(--white); border-radius: var(--r-md); padding: 22px 24px; box-shadow: var(--shadow-md);
   font-family: var(--serif); font-size: 1rem; line-height: 1.5;
 }
