@@ -274,8 +274,15 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 @keyframes rise { to { opacity: 1; transform: none; } }
 
 @media (max-width: 1020px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-copy .display { max-width: 14ch; }
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  /* Stacked: let the copy's children join the grid so the media can sit
+     between the intro sentence and the selling points */
+  .hero-copy { display: contents; }
+  .hero-copy .display { order: 1; max-width: 14ch; }
+  .hero-sub { order: 2; }
+  .hero-media { order: 3; margin-bottom: 6px; }
+  .hero-points { order: 4; }
+  .hero-actions { order: 5; }
   .hero { padding-bottom: 50px; }
   .hero-media { padding: 70px 10px 140px 40px; }
   .hero-badges { right: 0; bottom: 30px; }
