@@ -653,7 +653,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 /* ------------------------------------------------ FAQ */
 .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
 .faq-aside { position: sticky; top: calc(var(--header-h) + 30px); }
-.faq-aside .img-card { aspect-ratio: 4 / 5; margin-top: 30px; }
+.faq-aside .img-card { aspect-ratio: 4 / 3; margin-top: 30px; }
 .faq-list details { border-top: 1px solid rgba(2, 15, 120, .15); }
 .faq-list details:last-child { border-bottom: 1px solid rgba(2, 15, 120, .15); }
 .faq-list summary { list-style: none; cursor: pointer; padding: 22px 50px 22px 0; position: relative; font-family: var(--serif); font-size: clamp(1.15rem, 1.6vw, 1.35rem); color: var(--ink); line-height: 1.3; }
