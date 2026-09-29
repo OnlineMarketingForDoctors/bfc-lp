@@ -10,8 +10,15 @@
 
   /* ---------- Header state */
   var header = $('.site-header');
+  var toTop = $('[data-to-top]');
+  toTop.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    $('.brand').focus({ preventScroll: true });
+  });
   function onScroll() {
     header.classList.toggle('is-scrolled', window.scrollY > 40);
+    toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

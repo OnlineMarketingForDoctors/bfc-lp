@@ -758,6 +758,22 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .f-loc a { margin-top: 6px; font-weight: 700; font-size: .85rem; }
 .f-bottom { margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 40px; }
 .f-bottom .disclaimer { margin: 0; font-size: .8rem; max-width: 80ch; }
+.f-legal { display: flex; flex-direction: column; gap: 6px; }
+.f-credit { font-size: .82rem; }
+.f-credit a { text-decoration: underline; text-underline-offset: 3px; }
+.f-credit a:hover { color: var(--gold-soft); }
+
+/* Back to top */
+.to-top {
+  position: fixed; right: clamp(14px, 2.5vw, 28px); bottom: clamp(14px, 2.5vw, 28px); z-index: 80;
+  width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--royal), var(--ink)); color: #fff; box-shadow: var(--shadow-md);
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s, background-color .25s ease;
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; transition: opacity .3s ease, transform .3s ease; }
+.to-top:hover { transform: translateY(-3px); }
+.to-top svg { width: 22px; height: 22px; }
 @media (max-width: 1020px) { .footer-grid { grid-template-columns: 1fr; } .f-locs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .f-locs { grid-template-columns: 1fr; } }
 
