@@ -293,7 +293,11 @@
     if (focus) tab.focus();
   }
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('click', function () {
+      selectTab(t);
+      // On stacked layouts the detail panel sits below the tiles
+      if (window.innerWidth <= 1020) $('.type-detail').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+    });
     t.addEventListener('keydown', function (e) {
       var k = e.key, j = null;
       if (k === 'ArrowDown' || k === 'ArrowRight') j = (i + 1) % tabs.length;
