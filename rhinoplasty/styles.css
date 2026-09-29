@@ -389,7 +389,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .review-card .rc-stars { display: flex; gap: 3px; color: #5de0c6; }
 .review-card .rc-stars svg { width: 18px; height: 18px; }
 .review-card .rc-logo { height: 26px; width: auto; }
-.review-card blockquote { margin: 0; font-family: var(--serif); font-size: 1.12rem; line-height: 1.55; color: #fff; }
+.review-card blockquote { margin: 0; font-family: var(--sans); font-size: 1rem; line-height: 1.6; color: #fff; }
 .review-card .rc-text { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
 .review-card.is-expanded .rc-text { -webkit-line-clamp: unset; display: block; }
 .review-card .rc-more { align-self: flex-start; background: none; border: 0; padding: 8px 0 0; color: var(--gold); font-weight: 800; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; }
