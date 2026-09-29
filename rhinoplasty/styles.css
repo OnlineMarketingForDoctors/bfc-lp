@@ -168,7 +168,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .header-mobile { display: flex; gap: 10px; }
   .brand img { width: 64px; height: 64px; }
   .site-header.is-scrolled .brand { display: none; }
-  .site-header.is-scrolled .mobile-book { display: inline-flex; min-height: 46px; padding: 0 20px; font-size: .8rem; justify-self: start; }
+  .site-header.is-scrolled .mobile-book { display: inline-flex; min-height: 46px; padding: 0 18px; font-size: .74rem; letter-spacing: .04em; white-space: nowrap; justify-self: start; }
 }
 
 /* ------------------------------------------------ Hero */
