@@ -83,9 +83,24 @@
     });
     $('[data-lightbox-close]', lightbox).addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    // Self-hosted videos open in the same lightbox
+    $$('[data-mp4-lightbox]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lbFrame.innerHTML = '<video src="' + btn.dataset.mp4Lightbox + '" controls autoplay playsinline></video>';
+        if (typeof lightbox.showModal === 'function') lightbox.showModal(); else lightbox.setAttribute('open', '');
+      });
+    });
     // Removing the iframe stops the audio when the lightbox closes (button, Esc or backdrop)
     lightbox.addEventListener('close', function () { lbFrame.innerHTML = ''; });
   }
+
+  /* ---------- Silent background loops: play only when visible, never with reduced motion */
+  $$('video[data-bg-loop]').forEach(function (v) {
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) v.play().catch(function () {}); else v.pause();
+    }, { threshold: 0.2 }).observe(v);
+  });
 
   /* ---------- Patient video reviews */
   $$('.poster-btn[data-video]').forEach(function (btn) {
