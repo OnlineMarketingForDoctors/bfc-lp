@@ -322,6 +322,11 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   .sat-1 { left: 0; top: 0; }
 }
 @media (max-width: 640px) {
+  /* Centred on a phone: stacked, the call to action and the ratings are the
+     only things left of a column this narrow, and reading them off the left
+     edge under a centred video looks like an alignment slip. */
+  .hero-actions { justify-content: center; }
+  .hero-ratings { justify-content: center; }
   .hero-media { padding: 64px 0 150px; }
   .sat-1 { width: 28%; }
   .video-frame { border-width: 4px; width: 100%; margin: 0; }
