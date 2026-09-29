@@ -480,6 +480,8 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .type-panel { position: relative; }
 .type-panel[hidden] { display: none; }
 .type-panel .img-card { aspect-ratio: 5 / 4; }
+/* Faces in these tabs look towards the tab list */
+.type-panel .img-card.mirror { transform: scaleX(-1); }
 .type-panel .panel-card {
   position: relative; margin: -90px 0 0 clamp(20px, 6%, 60px); z-index: 2;
   background: #fff; color: var(--text); border-radius: var(--r-md); padding: 28px 30px; box-shadow: var(--shadow-lg); max-width: 560px;
