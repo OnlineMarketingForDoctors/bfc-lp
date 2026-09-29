@@ -740,11 +740,26 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 @media (max-width: 1020px) { .book-grid { grid-template-columns: 1fr; } .book-media { display: none; } }
 
 /* ------------------------------------------------ Footer */
-.site-footer { background: var(--ink-950); color: var(--on-dark-muted); padding: 50px 0; font-size: .9rem; }
-.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
-.site-footer img { width: auto; height: 76px; background: #fff; padding: 10px 14px; border-radius: 18px; box-sizing: content-box; }
+.site-footer { background: var(--ink-950); color: var(--on-dark-muted); padding: clamp(50px, 6vw, 80px) 0 36px; font-size: .92rem; }
 .site-footer a { color: #fff; }
-.site-footer .disclaimer { margin-top: 24px; font-size: .8rem; max-width: 90ch; }
+.footer-grid { display: grid; grid-template-columns: 1fr 2.4fr; gap: clamp(30px, 5vw, 80px); }
+.f-brand img { width: auto; height: 76px; background: #fff; padding: 10px 14px; border-radius: 18px; box-sizing: content-box; }
+.f-brand p { margin: 18px 0 10px; max-width: 30ch; }
+.f-phone { display: inline-block; font-weight: 900; font-size: 1.35rem; text-decoration: none; }
+.f-social { display: flex; gap: 10px; margin-top: 20px; }
+.f-social a { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.22); transition: background-color .25s ease, border-color .25s ease, color .25s ease; }
+.f-social a:hover { background: var(--gold); border-color: var(--gold); color: var(--ink-950); }
+.f-social svg { width: 19px; height: 19px; }
+.f-locs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.f-loc { display: flex; flex-direction: column; gap: 4px; }
+.f-city { font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); }
+.f-loc strong { color: #fff; font-family: var(--serif); font-weight: 500; font-size: 1.1rem; }
+.f-loc address { font-style: normal; }
+.f-loc a { margin-top: 6px; font-weight: 700; font-size: .85rem; }
+.f-bottom { margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 40px; }
+.f-bottom .disclaimer { margin: 0; font-size: .8rem; max-width: 80ch; }
+@media (max-width: 1020px) { .footer-grid { grid-template-columns: 1fr; } .f-locs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .f-locs { grid-template-columns: 1fr; } }
 
 /* Parallax helpers */
 [data-parallax] { will-change: transform; }
