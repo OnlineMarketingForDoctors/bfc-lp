@@ -264,6 +264,16 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1021px) {
   .hero-ratings { position: absolute; top: 0; right: 0; z-index: 4; margin: 0; padding: 0; border: 0; gap: 36px; }
 }
+/* Starting price under the video */
+.hero-price { position: absolute; left: 60px; bottom: 16px; z-index: 3; display: grid; grid-template-columns: auto auto; grid-template-areas: "label label" "amount note"; align-items: end; column-gap: 16px; color: #fff; text-decoration: none; }
+.hp-label { grid-area: label; font-size: .95rem; font-weight: 600; color: var(--on-dark-muted); margin-bottom: 2px; }
+.hp-amount { grid-area: amount; font-family: var(--serif); font-size: clamp(2.4rem, 3.4vw, 3.2rem); font-weight: 600; line-height: 1; color: var(--gold-soft); }
+.hp-note { grid-area: note; font-size: .9rem; color: var(--on-dark-muted); padding-bottom: 6px; }
+.hero-price:hover .hp-note { color: #fff; text-decoration: underline; }
+@media (max-width: 1020px) {
+  .hero-price { position: static; margin: 22px auto 0; width: max-content; max-width: 100%; justify-items: center; grid-template-columns: auto; grid-template-areas: "label" "amount" "note"; text-align: center; }
+  .hp-note { padding: 4px 0 0; }
+}
 /* Hero sound button sits bottom left, clear of the results card */
 #hero-video .sound-btn { right: auto; left: 16px; }
 /* Small rotating before and after card on the video's bottom-right corner */
