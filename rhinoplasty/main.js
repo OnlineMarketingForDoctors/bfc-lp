@@ -258,7 +258,7 @@
     { p: '07', n: 5, title: 'Patient in their 20s', meta: 'Open septorhinoplasty, 2 months after', text: 'Hump removed, tip stabilised and overall size reduced, with a deviated septum corrected to improve breathing.' },
     { p: '04', n: 7, title: 'Female, 21', meta: 'Rhinoplasty, 4 weeks after', text: 'A crooked nose with too much projection and a high bridge, brought into quieter proportion.' },
     { p: '03', n: 5, title: 'Female, 35', meta: 'Rhinoplasty, 9 months after', text: 'Breathing difficulties and a nose out of balance with her face. She wanted an upturned, cuter nasal tip. Nine months on, shape and function work together.' },
-    { p: '05', n: 1, title: 'Female, 27', meta: 'Rhinoplasty, 3 weeks after', text: 'She wanted the hump gone, the tip brought in and the droop when smiling stopped.' },
+    { p: '05', n: 2, title: 'Female, 27', meta: 'Rhinoplasty, 3 weeks after', text: 'She wanted the hump gone, the tip brought in and the droop when smiling stopped.' },
     { p: '06', n: 4, title: 'Rhinoplasty patient', meta: '6 weeks after', text: 'A straighter, more refined profile six weeks after surgery.' }
   ];
   var grid = $('[data-ba-grid]');
