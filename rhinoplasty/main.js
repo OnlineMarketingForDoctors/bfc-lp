@@ -248,16 +248,16 @@
   /* ---------- Before and after */
   var CASES = [
     { p: '11', n: 6, title: 'Female, 30s', meta: 'Open septorhinoplasty, 3 months after', text: 'She wanted a smoother, straighter bridge and a tip that sat back in proportion. The hump was reduced, the tip refined and de-projected, the overhanging columella corrected and a leftward lean straightened.' },
-    { p: '13', n: 6, title: 'Female, 20s', meta: 'Open septorhinoplasty, 9 days after', text: 'A long nose that drifted to the right. The tip was shortened and refined, and a spreader graft and tip support graft from her own septum brought everything back into line.' },
+    { p: '13', n: 6, title: 'Female, 20s', meta: 'Open septorhinoplasty, 9 days after', text: 'A long nose that drifted to the right. She wanted a pixie upturned nasal tip. The tip was shortened and refined, and a spreader graft and tip support graft from her own septum brought everything back into line.' },
     { p: '01', n: 5, title: 'Female, 26', meta: 'Rhinoplasty, 6 weeks after', text: 'A prominent hump and difficulty breathing. The bridge was lowered, the tip refined and the septum straightened to open up her airway.' },
     { p: '02', n: 7, title: 'Female, 31', meta: 'Rhinoplasty, 10 weeks after', text: 'A dorsal hump, a tip that dipped when she smiled and a nose that looked large in profile. The result is a softer, better balanced side view.' },
-    { p: '09', n: 4, title: 'Female, 30s', meta: 'Open rhinoplasty, 3 weeks after', text: 'A wide nose, a dorsal hump and a bulbous tip. The nasal bones were narrowed, the hump reduced and the tip reshaped with fine sutures.' },
+    { p: '09', n: 4, title: 'Female, 30s', meta: 'Open rhinoplasty, 3 weeks after', text: 'A wide nose, a dorsal hump and a bulbous tip. She wanted to reduce the over-projected nasal tip. The nasal bones were narrowed, the hump reduced and the tip reshaped with fine sutures.' },
     { p: '10', n: 3, title: 'Female, 70s', meta: 'Open septorhinoplasty, 3 months after', text: 'An old injury and a recent fall had left a pronounced hump and a lean to the left. The septum was straightened, a cartilage graft added and the tip stabilised.' },
     { p: '12', n: 7, title: 'Female, 50s', meta: 'Open septorhinoplasty, 3 months after', text: 'She wanted a gentler side profile and a straighter nose from the front. Both were achieved without losing her character.' },
     { p: '08', n: 3, title: 'Male, 30s', meta: 'Open septorhinoplasty, 1 month after', text: 'A crooked nose and a deviated septum blocking the right side. Straightened inside and out for a clearer airway.' },
     { p: '07', n: 5, title: 'Patient in their 20s', meta: 'Open septorhinoplasty, 2 months after', text: 'Hump removed, tip stabilised and overall size reduced, with a deviated septum corrected to improve breathing.' },
     { p: '04', n: 7, title: 'Female, 21', meta: 'Rhinoplasty, 4 weeks after', text: 'A crooked nose with too much projection and a high bridge, brought into quieter proportion.' },
-    { p: '03', n: 5, title: 'Female, 35', meta: 'Rhinoplasty, 9 months after', text: 'Breathing difficulties and a nose out of balance with her face. Nine months on, shape and function work together.' },
+    { p: '03', n: 5, title: 'Female, 35', meta: 'Rhinoplasty, 9 months after', text: 'Breathing difficulties and a nose out of balance with her face. She wanted an upturned, cuter nasal tip. Nine months on, shape and function work together.' },
     { p: '05', n: 1, title: 'Female, 27', meta: 'Rhinoplasty, 3 weeks after', text: 'She wanted the hump gone, the tip brought in and the droop when smiling stopped.' },
     { p: '06', n: 4, title: 'Rhinoplasty patient', meta: '6 weeks after', text: 'A straighter, more refined profile six weeks after surgery.' }
   ];
