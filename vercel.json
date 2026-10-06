@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/rhinoplasty/(img|media)/(.*)",
+      "source": "/(rhinoplasty|mini-facelift)/(img|media)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
