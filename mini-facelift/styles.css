@@ -840,3 +840,5 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .review-card .rc-google { display: flex; align-items: center; gap: 7px; height: 26px; font-weight: 700; font-size: 1.05rem; color: #fff; }
 .review-card .rc-google img { height: 20px; width: auto; }
 .cando-media .satellite video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.preserve-bg img.statue { object-position: 0% 30%; }
+@media (max-width: 860px) { .preserve-bg img.statue { top: 0; height: 760px; object-position: 44% 0%; } }
