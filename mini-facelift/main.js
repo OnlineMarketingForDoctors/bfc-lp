@@ -72,11 +72,19 @@
       bg.allow = 'autoplay; encrypted-media; picture-in-picture';
       bg.tabIndex = -1;
       var live = false;
-      function goLive() { if (live) return; live = true; bg.classList.add('is-live'); }
+      // The uploader has captions switched on by default, which cc_load_policy=0 does not override,
+      // so tell the player to drop its captions module once it is ready and again as it starts playing
+      function noCaptions() {
+        ['captions', 'cc'].forEach(function (m) {
+          bg.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unloadModule', args: [m] }), '*');
+        });
+      }
+      function goLive() { noCaptions(); if (live) return; live = true; bg.classList.add('is-live'); setTimeout(noCaptions, 800); setTimeout(noCaptions, 2500); }
       window.addEventListener('message', function (ev) {
         if (ev.source !== bg.contentWindow) return;
         var d; try { d = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data; } catch (err) { return; }
         if (!d) return;
+        if (d.event === 'onReady' || d.event === 'onApiChange') noCaptions();
         if (d.event === 'onStateChange' && d.info === 1) goLive();
         if (d.event === 'infoDelivery' && d.info && d.info.playerState === 1) goLive();
       });
