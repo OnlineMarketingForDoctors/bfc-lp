@@ -844,5 +844,5 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 @media (max-width: 860px) { .preserve-bg img.statue { top: 0; height: 760px; object-position: 44% 0%; } }
 .cando-media .satellite .video-open { z-index: 2; border-radius: 50%; }
 .sat-play { position: absolute; z-index: 1; right: 14%; bottom: 14%; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.92); color: var(--ink); box-shadow: var(--shadow-md); pointer-events: none; transition: transform .3s ease; }
-.sat-play svg { width: 18px; height: 18px; margin-left: 3px; }
+.sat-play svg { display: block; width: 20px; height: 20px; }
 .cando-media .satellite:hover .sat-play { transform: scale(1.12); }
