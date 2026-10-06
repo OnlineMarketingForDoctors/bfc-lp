@@ -98,6 +98,13 @@
     });
     $('[data-lightbox-close]', lightbox).addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    // Other YouTube videos open in the same lightbox
+    $$('[data-yt-lightbox]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lbFrame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + btn.dataset.ytLightbox + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Mr Supriya on the mini facelift" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        if (typeof lightbox.showModal === 'function') lightbox.showModal(); else lightbox.setAttribute('open', '');
+      });
+    });
     // Self-hosted videos open in the same lightbox
     $$('[data-mp4-lightbox]').forEach(function (btn) {
       btn.addEventListener('click', function () {
