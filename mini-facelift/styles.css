@@ -846,3 +846,5 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .sat-play { position: absolute; z-index: 1; right: 14%; bottom: 14%; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.92); color: var(--ink); box-shadow: var(--shadow-md); pointer-events: none; transition: transform .3s ease; }
 .sat-play svg { display: block; width: 20px; height: 20px; }
 .cando-media .satellite:hover .sat-play { transform: scale(1.12); }
+/* Longer hero headline: smaller on desktop so it sits on four lines */
+@media (min-width: 1021px) { .hero-copy .display { font-size: clamp(2.6rem, 4.6vw, 4.5rem); max-width: 10.5ch; } }
