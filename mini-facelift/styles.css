@@ -848,3 +848,13 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .cando-media .satellite:hover .sat-play { transform: scale(1.12); }
 /* Longer hero headline: smaller on desktop so it sits on four lines */
 @media (min-width: 1021px) { .hero-copy .display { font-size: clamp(2.6rem, 4.6vw, 4.5rem); max-width: 10.5ch; } }
+/* Four price cards: two by two on tablets, one row on wide screens */
+.price-row { grid-template-columns: repeat(2, 1fr); }
+.price-row .price-card.featured { transform: none; }
+@media (min-width: 1240px) {
+  .price-row { grid-template-columns: repeat(4, 1fr); }
+  .price-row .price-card { padding: 30px 26px; }
+  .price-row .price-card .amount { font-size: clamp(2.6rem, 3.4vw, 3.3rem); }
+  .price-row .price-card.featured { transform: translateY(-18px); }
+}
+@media (max-width: 640px) { .price-row { grid-template-columns: 1fr; } }
