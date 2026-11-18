@@ -15,7 +15,7 @@
   --muted: #4b567f;
   --on-dark-muted: #b9c3ea;
 
-  --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --serif: "Playfair Display", Georgia, serif;
   --sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
 
   --r-lg: 32px;
@@ -66,7 +66,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: -.015em;
   line-height: 1.02;
   font-size: clamp(2.6rem, 5.6vw, 5.2rem);
-  font-variation-settings: "opsz" 96;
 }
 .h2 {
   font-family: var(--serif);
@@ -74,7 +73,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: -.01em;
   line-height: 1.06;
   font-size: clamp(2.1rem, 4vw, 3.6rem);
-  font-variation-settings: "opsz" 72;
   text-wrap: balance;
 }
 .h3 { font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.15; }
@@ -831,3 +829,6 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   .js .reveal { clip-path: inset(0 0 0 0 round var(--r-lg)); }
   [data-parallax] { transform: none !important; }
 }
+
+/* Playfair Display: even-height numbers for prices and dates */
+body { font-variant-numeric: lining-nums; }
