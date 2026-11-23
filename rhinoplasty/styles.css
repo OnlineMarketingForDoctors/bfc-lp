@@ -844,3 +844,78 @@ body { font-variant-numeric: lining-nums; }
   .hero-sub { margin: 16px 0 0; font-size: 1.15rem; }
   .hero-points { gap: 9px; margin: 22px 0 26px; }
 }
+
+/* ------------------------------------------------ Book a free discovery call (calendar) */
+.book-call { background: var(--white); }
+.book-call-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(30px, 5vw, 72px); align-items: start; }
+.book-call-copy { position: sticky; top: calc(var(--header-compact) + 30px); }
+.book-call-copy .h2 { color: var(--ink); }
+.book-call-copy .lede { margin-top: 18px; }
+.book-call-alt { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--mist); color: var(--muted); }
+.book-call-alt a { color: var(--ink); font-weight: 700; }
+.calendar-shell { background: #fff; border-radius: var(--r-lg); padding: 10px; border: 1px solid var(--mist); box-shadow: 0 40px 80px -40px rgba(2, 15, 120, .35); min-height: 720px; }
+.calendar-shell iframe { width: 100%; min-height: 700px; border: 0; display: block; overflow: hidden; border-radius: calc(var(--r-lg) - 8px); }
+@media (max-width: 1020px) {
+  .book-call-grid { grid-template-columns: 1fr; }
+  .book-call-copy { position: static; }
+  .calendar-shell { padding: 4px; }
+}
+
+/* ------------------------------------------------ Price table */
+.price-table-wrap { max-width: 1000px; margin: 0 auto; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); border-radius: var(--r-lg); padding: clamp(10px, 2vw, 22px) clamp(14px, 3vw, 34px); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table th, .price-table td { text-align: left; padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.14); vertical-align: top; }
+.price-table thead th { font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); }
+.price-table tbody th { font-weight: 700; color: #fff; width: 34%; }
+.price-table td { color: var(--on-dark-muted); }
+.price-table td:last-child, .price-table thead th:last-child { text-align: right; white-space: nowrap; }
+.price-table td:last-child { font-family: var(--serif); font-size: 1.45rem; color: var(--gold-soft); }
+.price-table tbody tr:last-child th, .price-table tbody tr:last-child td { border-bottom: 0; }
+.price-note { margin: 14px 12px 6px; color: var(--on-dark-muted); font-size: .95rem; }
+@media (max-width: 700px) {
+  .price-table thead { display: none; }
+  .price-table, .price-table tbody, .price-table tr { display: block; }
+  .price-table tr { display: grid; grid-template-columns: 1fr auto; column-gap: 14px; padding: 16px 4px; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .price-table tbody tr:last-child { border-bottom: 0; }
+  .price-table th, .price-table td { display: block; padding: 0; border: 0; width: auto; }
+  .price-table tbody th { grid-column: 1; width: auto; }
+  .price-table td:first-of-type { grid-column: 1; grid-row: 2; margin-top: 4px; font-size: .92rem; }
+  .price-table td:last-child { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+}
+.cost-lower { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; max-width: 1000px; margin: 44px auto 0; align-items: stretch; }
+.cost-lower .price-card.featured { transform: none; }
+.plim { font-weight: 800; letter-spacing: .06em; }
+.included-list { border-radius: var(--r-lg); padding: 30px 32px; border: 1px solid rgba(255,255,255,.16); }
+.included-list h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 14px; color: var(--gold-soft); }
+.included-list ul { display: grid; gap: 10px; }
+.included-list li { display: flex; gap: 12px; color: var(--on-dark-muted); }
+.included-list svg { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--gold); }
+@media (max-width: 860px) { .cost-lower { grid-template-columns: 1fr; } }
+
+/* ------------------------------------------------ Sticky enquiry: side tab (desktop), bottom bar (mobile) */
+.sticky-enquiry {
+  position: fixed; right: 0; top: 50%; z-index: 85;
+  writing-mode: vertical-rl; transform: translate(0, -50%);
+  background: var(--ink); color: #fff; text-decoration: none;
+  font-weight: 800; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 22px 13px; border-radius: 14px 0 0 14px; box-shadow: var(--shadow-md);
+  transition: transform .35s ease, background-color .25s ease;
+}
+.sticky-enquiry:hover { background: var(--royal); }
+.sticky-enquiry.is-hidden { transform: translate(110%, -50%); }
+.sticky-bar { display: none; }
+@media (max-width: 859px) {
+  .sticky-enquiry { display: none; }
+  .sticky-bar {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 85;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -10px 30px -16px rgba(2, 15, 120, .45);
+    transition: transform .35s ease;
+  }
+  .sticky-bar .btn { min-height: 48px; padding: 0 12px; font-size: .78rem; justify-content: center; }
+  .sticky-bar.is-hidden { transform: translateY(110%); }
+  body.has-sticky-bar .to-top { bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: 80px; }
+}
