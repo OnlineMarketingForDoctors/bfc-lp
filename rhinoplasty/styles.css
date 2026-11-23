@@ -187,6 +187,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .hero-grid { position: relative; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 3.5vw, 48px); align-items: center; }
 .hero-copy .display { color: #fff; max-width: 11ch; }
+.hero-eyebrow { color: var(--gold-soft); margin-bottom: 14px; }
 .hero-sub { margin: 22px 0 26px; font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--on-dark-muted); max-width: 44ch; }
 .hero-points { display: grid; gap: 12px; margin: 30px 0 34px; }
 .hero-points li { display: flex; gap: 14px; align-items: flex-start; font-weight: 600; }
@@ -302,6 +303,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 .is-ready .hero-copy > *:nth-child(3) { animation-delay: .2s; }
 .is-ready .hero-copy > *:nth-child(4) { animation-delay: .3s; }
 .is-ready .hero-copy > *:nth-child(5) { animation-delay: .4s; }
+.is-ready .hero-copy > *:nth-child(6) { animation-delay: .5s; }
 @keyframes rise { to { opacity: 1; transform: none; } }
 
 @media (max-width: 1020px) {
@@ -309,6 +311,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   /* Stacked: let the copy's children join the grid so the media can sit
      between the intro sentence and the selling points */
   .hero-copy { display: contents; }
+  .hero-eyebrow { order: 0; }
   .hero-copy .display { order: 1; max-width: 14ch; }
   .hero-sub { order: 2; }
   .hero-media { order: 3; margin-bottom: 6px; }
@@ -349,6 +352,7 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
   #hero-video .sound-btn { left: auto; right: 10px; top: 10px; bottom: auto; }
   .ba-mini { position: relative; right: auto; bottom: auto; width: 62%; margin: -40px auto 0; border-width: 4px; }
   .hero-copy .display { text-align: center; max-width: none; text-wrap: balance; }
+  .hero-eyebrow, .hero-sub { text-align: center; margin-left: auto; margin-right: auto; }
   .videos .quote-float { display: none; }
 }
 
@@ -832,3 +836,11 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 
 /* Playfair Display: even-height numbers for prices and dates */
 body { font-variant-numeric: lining-nums; }
+
+/* Eyebrow and lede added above the selling points: keep the call to action above the fold */
+@media (min-width: 1021px) {
+  .hero { padding-top: clamp(40px, 3.6vw, 52px); }
+  .hero-eyebrow { margin-bottom: 8px; }
+  .hero-sub { margin: 16px 0 0; font-size: 1.15rem; }
+  .hero-points { gap: 9px; margin: 22px 0 26px; }
+}
