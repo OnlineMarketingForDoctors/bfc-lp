@@ -884,7 +884,7 @@ body { font-variant-numeric: lining-nums; }
 }
 .cost-lower { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; max-width: 1000px; margin: 44px auto 0; align-items: stretch; }
 .cost-lower .price-card.featured { transform: none; }
-.plim { font-weight: 800; letter-spacing: .06em; }
+.plim-logo { display: block; height: 34px; width: auto; margin-bottom: 18px; }
 .included-list { border-radius: var(--r-lg); padding: 30px 32px; border: 1px solid rgba(255,255,255,.16); }
 .included-list h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 14px; color: var(--gold-soft); }
 .included-list ul { display: grid; gap: 10px; }
