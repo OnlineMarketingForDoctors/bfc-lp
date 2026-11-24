@@ -939,3 +939,6 @@ body { font-variant-numeric: lining-nums; }
 @media (max-width: 1020px) { .hero-eyebrow { order: 0; } .hero-sub { order: 2; } }
 @media (max-width: 640px) { .hero-eyebrow, .hero-sub { text-align: center; margin-left: auto; margin-right: auto; } }
 .price-card.featured .amount small { display: block; margin-top: 8px; }
+
+/* Separate the intro from the section after it */
+.cando-section { background: var(--white); }

@@ -928,3 +928,6 @@ body { font-variant-numeric: lining-nums; }
   .header-cta { gap: 12px; }
   .header-cta .btn { padding: 0 18px; font-size: .78rem; }
 }
+
+/* Separate the intro from the section after it */
+.cando-section { background: var(--white); }
