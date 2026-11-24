@@ -1008,3 +1008,7 @@ body { font-variant-numeric: lining-nums; }
 @media (max-width: 1300px) { .main-nav a { font-size: .74rem; letter-spacing: .05em; } .main-nav ul { gap: 11px; } .brand img { height: 78px; } }
 @media (max-width: 1140px) { .main-nav a { font-size: .68rem; letter-spacing: .03em; } .main-nav ul { gap: 8px; } .phone-block strong { font-size: 1rem; } .phone-block span { font-size: .6rem; } }
 .section.glance.stats { min-height: 0; padding: clamp(56px, 6vw, 84px) 0; }
+
+/* Stats removed: keep "The Deep Plane difference" (white) and the journey apart */
+.journey { background: #e6ebf8; }
+.journey-steps li { background: var(--white); }
