@@ -11,7 +11,7 @@
       ]
     },
     {
-      "source": "/(rhinoplasty|mini-facelift)/(img|media)/(.*)",
+      "source": "/(rhinoplasty|mini-facelift|deep-plane-facelift)/(img|media)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
