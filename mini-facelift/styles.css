@@ -859,3 +859,72 @@ a.badge-doctify:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg
 
 /* Playfair Display: even-height numbers for prices and dates */
 body { font-variant-numeric: lining-nums; }
+
+/* ------------------------------------------------ Book a free discovery call (calendar) */
+.book-call { background: var(--white); }
+.book-call-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(30px, 5vw, 72px); align-items: start; }
+.book-call-copy { position: sticky; top: calc(var(--header-compact) + 30px); }
+.book-call-copy .h2 { color: var(--ink); }
+.book-call-copy .lede { margin-top: 18px; }
+.book-call-alt { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--mist); color: var(--muted); }
+.book-call-alt a { color: var(--ink); font-weight: 700; }
+.calendar-shell { background: #fff; border-radius: var(--r-lg); padding: 10px; border: 1px solid var(--mist); box-shadow: 0 40px 80px -40px rgba(2, 15, 120, .35); min-height: 720px; }
+.calendar-shell iframe { width: 100%; min-height: 700px; border: 0; display: block; overflow: hidden; border-radius: calc(var(--r-lg) - 8px); }
+@media (max-width: 1020px) {
+  .book-call-grid { grid-template-columns: 1fr; }
+  .book-call-copy { position: static; }
+  .calendar-shell { padding: 4px; }
+}
+
+.plim-logo { display: block; height: 34px; width: auto; margin-bottom: 18px; }
+
+/* ------------------------------------------------ Sticky enquiry: side tab (desktop), bottom bar (mobile) */
+.sticky-enquiry {
+  position: fixed; right: 0; top: 50%; z-index: 85;
+  writing-mode: vertical-rl; transform: translate(0, -50%);
+  background: var(--ink); color: #fff; text-decoration: none;
+  font-weight: 800; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 22px 13px; border-radius: 14px 0 0 14px; box-shadow: var(--shadow-md);
+  transition: transform .35s ease, background-color .25s ease;
+}
+.sticky-enquiry:hover { background: var(--royal); }
+.sticky-enquiry.is-hidden { transform: translate(110%, -50%); }
+.sticky-bar { display: none; }
+@media (max-width: 859px) {
+  .sticky-enquiry { display: none; }
+  .sticky-bar {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 85;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -10px 30px -16px rgba(2, 15, 120, .45);
+    transition: transform .35s ease;
+  }
+  .sticky-bar .btn { min-height: 48px; padding: 0 12px; font-size: .78rem; justify-content: center; }
+  .sticky-bar.is-hidden { transform: translateY(110%); }
+  body.has-sticky-bar .to-top { bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: 80px; }
+}
+
+/* Header with seven menu links and the longer CTA: keep the phone number on one line */
+.phone-block strong { white-space: nowrap; }
+@media (max-width: 1360px) {
+  .main-nav ul { gap: clamp(12px, 1.3vw, 20px); }
+  .main-nav a { letter-spacing: .08em; }
+  .header-cta .btn { padding: 0 22px; }
+}
+.brand { flex: none; }
+.brand img { max-width: none; }
+.header-cta .cta-short { display: none; }
+@media (max-width: 1300px) {
+  .header-cta .cta-long { display: none; }
+  .header-cta .cta-short { display: inline; }
+}
+@media (max-width: 1140px) {
+  .main-nav ul { gap: 11px; }
+  .main-nav a { font-size: .74rem; letter-spacing: .06em; }
+  .brand img { height: 78px; }
+  .phone-block strong { font-size: 1.1rem; }
+  .header-cta { gap: 12px; }
+  .header-cta .btn { padding: 0 18px; font-size: .78rem; }
+}

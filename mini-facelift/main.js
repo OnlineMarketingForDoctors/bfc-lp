@@ -437,21 +437,63 @@
     updateParallax();
   }
 
-  /* ---------- Booking form: load when near the viewport */
-  var formFrame = $('#inline-DGtZDKfx99GubvJJl4XP');
-  function loadForm() {
-    if (!formFrame || formFrame.src) return;
-    formFrame.src = formFrame.dataset.src;
+  /* ---------- GoHighLevel embeds: discovery call calendar and enquiry form.
+     The page's query string (gclid, gbraid, wbraid, utm_*) is passed into both
+     so the ad click is stored with the booking or enquiry. */
+  var adParams = location.search.replace(/^\?/, '');
+  function withParams(url) { return adParams ? url + (url.indexOf('?') > -1 ? '&' : '?') + adParams : url; }
+  var embedScript = false;
+  function loadEmbedScript() {
+    if (embedScript) return;
+    embedScript = true;
     var s = document.createElement('script');
     s.src = 'https://link.msgsndr.com/js/form_embed.js';
     s.async = true;
     document.body.appendChild(s);
   }
-  if (formFrame) {
+  function loadFrame(frame) {
+    if (!frame || frame.src) return;
+    frame.src = withParams(frame.dataset.src);
+    loadEmbedScript();
+  }
+  var calFrame = $('#dW8ayyL6OGdoB5sFchAC_booking');
+  var formFrame = $('#inline-DGtZDKfx99GubvJJl4XP');
+  [calFrame, formFrame].forEach(function (frame) {
+    if (!frame) return;
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { loadForm(); o.disconnect(); } }, { rootMargin: '1200px 0px' }).observe(formFrame);
-    } else loadForm();
-    $$('a[href="#book"]').forEach(function (a) { a.addEventListener('click', loadForm); });
+      new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { loadFrame(frame); o.disconnect(); } }, { rootMargin: '1200px 0px' }).observe(frame);
+    } else loadFrame(frame);
+  });
+  $$('a[href="#book-call"]').forEach(function (a) { a.addEventListener('click', function () { loadFrame(calFrame); }); });
+  $$('a[href="#book"]').forEach(function (a) { a.addEventListener('click', function () { loadFrame(formFrame); }); });
+
+  /* ---------- Sticky enquiry tab (desktop) and bottom bar (mobile):
+     hidden near the top and while the calendar or the form is on screen */
+  var stickyEls = $$('.sticky-enquiry, .sticky-bar');
+  if (stickyEls.length) {
+    var onScreen = {};
+    var targets = ['#book-call', '#book'].map(function (id) { return $(id); }).filter(Boolean);
+    function updateSticky() {
+      var hide = window.scrollY < 300 || Object.keys(onScreen).some(function (k) { return onScreen[k]; });
+      stickyEls.forEach(function (el) { el.classList.toggle('is-hidden', hide); });
+      document.body.classList.toggle('has-sticky-bar', !hide);
+    }
+    if ('IntersectionObserver' in window) {
+      var so = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { onScreen[en.target.id] = en.isIntersecting; });
+        updateSticky();
+      }, { threshold: 0.15 });
+      targets.forEach(function (t) { so.observe(t); });
+    }
+    window.addEventListener('scroll', updateSticky, { passive: true });
+    updateSticky();
+    // GA4 (via GTM): secondary event, for reporting only
+    $$('[data-sticky]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'sticky_enquiry_click', sticky_label: a.dataset.stickyLabel, link_target: a.getAttribute('href') });
+      });
+    });
   }
 
   var yr = $('[data-year]');
