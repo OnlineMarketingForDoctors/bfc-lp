@@ -919,3 +919,26 @@ body { font-variant-numeric: lining-nums; }
   body.has-sticky-bar .to-top { bottom: calc(84px + env(safe-area-inset-bottom)); }
   .site-footer { padding-bottom: 80px; }
 }
+
+/* Header with seven menu links and the longer CTA: keep the phone number on one line */
+.phone-block strong { white-space: nowrap; }
+@media (max-width: 1360px) {
+  .main-nav ul { gap: clamp(12px, 1.3vw, 20px); }
+  .main-nav a { letter-spacing: .08em; }
+  .header-cta .btn { padding: 0 22px; }
+}
+.brand { flex: none; }
+.brand img { max-width: none; }
+.header-cta .cta-short { display: none; }
+@media (max-width: 1300px) {
+  .header-cta .cta-long { display: none; }
+  .header-cta .cta-short { display: inline; }
+}
+@media (max-width: 1140px) {
+  .main-nav ul { gap: 11px; }
+  .main-nav a { font-size: .74rem; letter-spacing: .06em; }
+  .brand img { height: 78px; }
+  .phone-block strong { font-size: 1.1rem; }
+  .header-cta { gap: 12px; }
+  .header-cta .btn { padding: 0 18px; font-size: .78rem; }
+}
